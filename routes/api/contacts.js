@@ -1,24 +1,8 @@
 import express from "express";
-import { nanoid } from "nanoid";
-import Joi from "joi";
-
-import {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-  updateContact,
-} from "../../models/contacts.js";
 
 export const router = express.Router();
 
-const schema = Joi.object({
-  name: Joi.string().required(),
-  email: Joi.string().email().required(),
-  phone: Joi.string().required(),
-});
-
-router.get("/", async (req, res, next) => {
+/* router.get("/", async (req, res, next) => {
   const contacts = await listContacts();
   res.status(200).json(contacts);
 });
@@ -69,3 +53,4 @@ router.put("/:contactId", async (req, res, next) => {
   }
   res.status(200).json(contact);
 });
+ */

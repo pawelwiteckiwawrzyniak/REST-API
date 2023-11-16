@@ -1,9 +1,6 @@
 import express from "express";
-
 import morgan from "morgan";
-
 import cors from "cors";
-
 import { router as contactsRouter } from "./routes/api/contacts.js";
 
 export const app = express();
