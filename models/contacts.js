@@ -1,4 +1,4 @@
-import fs from "fs/promises";
+/* import fs from "fs/promises";
 import path from "path";
 
 const contactsPath = path.join(process.cwd(), "/models/contacts.json");
@@ -53,3 +53,4 @@ export const updateContact = async (contactId, body) => {
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
   return contacts[contact];
 };
+ */

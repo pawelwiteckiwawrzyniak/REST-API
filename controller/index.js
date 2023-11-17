@@ -4,12 +4,13 @@ import {
   createContact,
   updateContact,
   removeContact,
-} from "../service";
+  updateStatusContact,
+} from "../service/index.js";
 
 export const get = async (req, res, next) => {
   try {
     const contacts = await getAllContacts();
-    res.status(200).json(contacts);
+    return res.status(200).json(contacts);
   } catch (error) {
     console.error(error);
     next(error);
@@ -20,7 +21,7 @@ export const getById = async (req, res, next) => {
   try {
     const { contactId } = req.params;
     const contact = await getContactById(contactId);
-    if (contact !== undefined) {
+    if (contact) {
       return res.status(200).json({ contact });
     }
     res.status(404).json({ message: "Not found" });
@@ -32,17 +33,7 @@ export const getById = async (req, res, next) => {
 
 export const post = async (req, res, next) => {
   try {
-    const { name, email, phone } = req.body;
-    /* const validation = schema.validate(req.body);
-    if (validation.error) {
-      return res.status(400).json({ message: "missing required name - field" });
-    } */
-    const contact = {
-      name,
-      email,
-      phone,
-    };
-    await createContact(contact);
+    const contact = await createContact(req.body);
     res.status(201).json(contact);
   } catch (error) {
     console.error(error);
@@ -53,10 +44,7 @@ export const post = async (req, res, next) => {
 export const remove = async (req, res, next) => {
   try {
     const { contactId } = req.params;
-    /* const contact = */ await removeContact(contactId);
-    /* if (contact === false) {
-      return res.status(404).json({ message: "Not found" });
-    } */
+    await removeContact(contactId);
     res.status(200).json({ message: "contact deleted" });
   } catch (error) {
     console.error(error);
@@ -67,17 +55,37 @@ export const remove = async (req, res, next) => {
 export const put = async (req, res, next) => {
   try {
     const { contactId } = req.params;
-    /* const validation = schema.validate(req.body);
-    if (validation.error) {
-      return res.status(400).json({ message: "missing fields" });
-    } */
+
     const contact = await updateContact(contactId, req.body);
-    /* if (contact === false) {
-      return res.status(404).json({ message: "Not found" });
-    } */
+
     res.status(200).json(contact);
   } catch (error) {
     console.error(error);
+    next(error);
+  }
+};
+
+export const patch = async (req, res, next) => {
+  try {
+    const { contactId } = req.params;
+
+    const contact = await getContactById(contactId);
+
+    if (contact.favorite === undefined) {
+      return res.status(400).json({ message: "missing field favorite" });
+    }
+    if (!contact.favorite) {
+      const isFavorite = true;
+      const updatedContact = await updateStatusContact(contactId, isFavorite);
+      return res.status(200).json(updatedContact);
+    }
+    if (contact.favorite) {
+      return res.status(200).json(contact);
+    }
+
+    res.status(404).json({ message: "Not found" });
+  } catch (error) {
+    console.log(error);
     next(error);
   }
 };
