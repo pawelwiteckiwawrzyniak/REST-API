@@ -5,7 +5,9 @@ import {
   updateContact,
   removeContact,
   updateStatusContact,
+  createUser,
 } from "../service/index.js";
+import bcrypt from "bcryptjs";
 
 export const get = async (req, res, next) => {
   try {
@@ -92,8 +94,11 @@ export const patch = async (req, res, next) => {
 
 export const signup = async (req, res, next) => {
   try {
-    const contact = req.body;
-    res.status(200).json(contact);
+    const { email, password } = req.body;
+    /*   bcrypt.hash(password, 10, async function (hash) {
+      const user = await createUser({ email, password });
+      res.status(201).json(user);
+    }); */
   } catch (error) {
     console.log(error);
     next(error);

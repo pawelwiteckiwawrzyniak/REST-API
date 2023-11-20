@@ -24,4 +24,4 @@ router.put("/:contactId", put);
 
 router.patch("/:contactId/favorite", patch);
 
-router.post("/users.signup", signup);
+router.post("/users/signup", signup);
