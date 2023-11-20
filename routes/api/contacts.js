@@ -7,6 +7,7 @@ import {
   remove,
   put,
   patch,
+  signup,
 } from "../../controller/index.js";
 
 export const router = express.Router();
@@ -22,3 +23,5 @@ router.delete("/:contactId", remove);
 router.put("/:contactId", put);
 
 router.patch("/:contactId/favorite", patch);
+
+router.post("/users.signup", signup);
