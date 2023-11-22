@@ -7,9 +7,9 @@ import setJWTStrategy from "./config/config-passport.js";
 import { configDotenv } from "dotenv";
 configDotenv();
 setJWTStrategy();
+
 const uriDb = process.env.DB_HOST;
 const connection = mongoose.connect(uriDb);
-
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 

@@ -8,10 +8,8 @@ import { currentUser } from "../../controller/currentUser.js";
 const router = express.Router();
 
 router.post("/signup", signup);
-
 router.post("/login", login);
-
 router.get("/logout", auth, logout);
-
 router.get("/current", auth, currentUser);
+
 export { router };
