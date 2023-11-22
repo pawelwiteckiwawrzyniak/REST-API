@@ -5,7 +5,7 @@ export const auth = (req, res, next) => {
     if (!user || err) {
       return res.status(401).json({ message: "Unauthorized" });
     }
-    req.user = user;
+    res.locals.user = user;
     next();
   })(req, res, next);
 };

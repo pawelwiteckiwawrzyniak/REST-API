@@ -33,6 +33,10 @@ export const updateStatusContact = async (id, isFavorite) => {
   );
 };
 
-export const updateUser = async (id, fields) => {
+export const getUserById = async (id) => {
+  return await User.findOne({ _id: id });
+};
+
+export const updateUser = (id, fields) => {
   return User.findByIdAndUpdate({ _id: id }, { $set: fields }, { new: true });
 };

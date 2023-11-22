@@ -1,35 +1,10 @@
-import express from "express";
-import {
-  get,
-  getById,
-  post,
-  remove,
-  put,
-  patch,
-  signup,
-  login,
-  logout,
-} from "../../controller/index.js";
-import { auth } from "../../middleware/auth.js";
+import { Router } from "express";
+import { router as contactsRouter } from "./contacts.js";
+import { router as usersRouter } from "./users.js";
 
-export const router = express.Router();
+const router = Router();
 
-router.get("/", get);
+router.use("/users", usersRouter);
+router.use("/contacts", contactsRouter);
 
-router.get("/:contactId", getById);
-
-router.post("/", post);
-
-router.delete("/:contactId", remove);
-
-router.put("/:contactId", put);
-
-router.patch("/:contactId/favorite", patch);
-
-router.post("/signup", signup);
-
-router.post("/login", login);
-
-router.get("/logout", auth, logout);
-
-/* router.get("/current", auth, currentUser); */
+export default router;

@@ -1,4 +1,4 @@
-import {
+/* import {
   getAllContacts,
   getContactById,
   createContact,
@@ -12,9 +12,9 @@ import jwt from "jsonwebtoken";
 import { configDotenv } from "dotenv";
 configDotenv();
 
-const secret = process.env.SECRET;
+const secret = process.env.SECRET; */
 
-export const get = async (req, res, next) => {
+/* export const get = async (req, res, next) => {
   try {
     const contacts = await getAllContacts();
     return res.status(200).json(contacts);
@@ -22,9 +22,9 @@ export const get = async (req, res, next) => {
     console.error(error);
     next(error);
   }
-};
+}; */
 
-export const getById = async (req, res, next) => {
+/* export const getById = async (req, res, next) => {
   try {
     const { contactId } = req.params;
     const contact = await getContactById(contactId);
@@ -36,9 +36,9 @@ export const getById = async (req, res, next) => {
     console.error(error);
     next(error);
   }
-};
+}; */
 
-export const post = async (req, res, next) => {
+/* export const post = async (req, res, next) => {
   try {
     const contact = await createContact(req.body);
     res.status(201).json(contact);
@@ -46,9 +46,9 @@ export const post = async (req, res, next) => {
     console.error(error);
     next(error);
   }
-};
+}; */
 
-export const remove = async (req, res, next) => {
+/* export const remove = async (req, res, next) => {
   try {
     const { contactId } = req.params;
     await removeContact(contactId);
@@ -57,9 +57,9 @@ export const remove = async (req, res, next) => {
     console.error(error);
     next(error);
   }
-};
+}; */
 
-export const put = async (req, res, next) => {
+/* export const put = async (req, res, next) => {
   try {
     const { contactId } = req.params;
 
@@ -70,9 +70,9 @@ export const put = async (req, res, next) => {
     console.error(error);
     next(error);
   }
-};
+}; */
 
-export const patch = async (req, res, next) => {
+/* export const patch = async (req, res, next) => {
   try {
     const { contactId } = req.params;
 
@@ -95,9 +95,9 @@ export const patch = async (req, res, next) => {
     console.log(error);
     next(error);
   }
-};
+}; */
 
-export const signup = async (req, res, next) => {
+/* export const signup = async (req, res, next) => {
   const { email, password, subscription } = req.body;
   const user = await User.findOne({ email });
   if (user) {
@@ -111,9 +111,9 @@ export const signup = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
+}; */
 
-export const login = async (req, res, next) => {
+/* export const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -130,9 +130,9 @@ export const login = async (req, res, next) => {
   const token = jwt.sign(payload, secret, { expiresIn: "1h" });
   const updatedUser = await updateUser(user.id, { token });
   return res.status(200).json({ token, updatedUser });
-};
+}; */
 
-export const logout = async (req, res, next) => {
+/* export const logout = async (req, res, next) => {
   const { username } = req.user;
   res.json({
     status: "success",
@@ -141,7 +141,7 @@ export const logout = async (req, res, next) => {
       message: `Authorization was successful: ${username}`,
     },
   });
-};
+}; */
 
 /* export const currentUser = async (req, res, next) => {
   const { _id } = req.user;
@@ -152,5 +152,4 @@ export const logout = async (req, res, next) => {
   });
 
   return res.status(200).json({ user });
-};
- */
+}; */
