@@ -2,7 +2,8 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
-import { router as contactsRouter } from "./routes/api/contacts.js";
+import { setJWTStrategy } from "./config/config-passport.js";
+import { router as apiRouter } from "./routes/api/index.js";
 import { configDotenv } from "dotenv";
 configDotenv();
 
@@ -14,8 +15,9 @@ const connection = mongoose.connect(uriDb);
 app.use(morgan(formatsLogger));
 app.use(cors());
 app.use(express.json());
+setJWTStrategy();
 
-app.use("/api/contacts", contactsRouter);
+app.use("/api", apiRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });

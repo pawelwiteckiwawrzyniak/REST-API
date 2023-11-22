@@ -5,9 +5,13 @@ import {
   updateContact,
   removeContact,
   updateStatusContact,
-  createUser,
 } from "../service/index.js";
-import bcrypt from "bcryptjs";
+import { User } from "../service/schemas/user.js";
+import jwt from "jsonwebtoken";
+import { config } from "dotenv";
+config();
+
+const secret = process.env.SECRET;
 
 export const get = async (req, res, next) => {
   try {
@@ -93,14 +97,62 @@ export const patch = async (req, res, next) => {
 };
 
 export const signup = async (req, res, next) => {
+  const { email, password, subscription } = req.body;
+  const user = await User.findOne({ email }).lean();
+  if (user) {
+    return res.status(409).json({ message: "Email in use" });
+  }
+  if (email === undefined || password === undefined) {
+    return res
+      .status(400)
+      .json({ message: "Validation failed. Set email and password" });
+  }
   try {
-    const { email, password } = req.body;
-    /*   bcrypt.hash(password, 10, async function (hash) {
-      const user = await createUser({ email, password });
-      res.status(201).json(user);
-    }); */
+    const newUser = new User({ email, password, subscription });
+    newUser.setPassword(password);
+    await newUser.save();
+    res.status(201).json(newUser);
   } catch (error) {
-    console.log(error);
     next(error);
   }
 };
+
+export const login = async (req, res, next) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+
+  if (email === undefined || password === undefined) {
+    return res
+      .status(400)
+      .json({ message: "Verification failed. Email or password not included" });
+  }
+
+  if (!user || !user.validPassword(password)) {
+    return res.status(401).json({ message: "Email or password is wrong" });
+  }
+
+  const payload = {
+    id: user.id,
+    email: user.email,
+  };
+
+  const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+  const userUpdate = await User.findByIdAndUpdate(
+    { _id: user.id },
+    { $set: { token } },
+    { new: true }
+  );
+  res.status(200).json({ token, userUpdate });
+};
+
+/* export const userAuth = async (req, res, next) => {
+  const { email } = req.user;
+  res.json({
+    status: "success",
+    code: 200,
+    data: {
+      message: `Authorization was successful: ${email}`,
+    },
+  });
+}; */

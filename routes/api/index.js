@@ -1,5 +1,4 @@
 import express from "express";
-
 import {
   get,
   getById,
@@ -8,6 +7,7 @@ import {
   put,
   patch,
   signup,
+  login,
 } from "../../controller/index.js";
 
 export const router = express.Router();
@@ -24,4 +24,8 @@ router.put("/:contactId", put);
 
 router.patch("/:contactId/favorite", patch);
 
-router.post("/users/signup", signup);
+router.post("/signup", signup);
+
+router.post("/login", login);
+
+/* router.post("/auth", auth, userAuth); */
