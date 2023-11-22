@@ -8,7 +8,9 @@ import {
   patch,
   signup,
   login,
+  logout,
 } from "../../controller/index.js";
+import { auth } from "../../middleware/auth.js";
 
 export const router = express.Router();
 
@@ -28,4 +30,6 @@ router.post("/signup", signup);
 
 router.post("/login", login);
 
-/* router.post("/auth", auth, userAuth); */
+router.get("/logout", auth, logout);
+
+/* router.get("/current", auth, currentUser); */

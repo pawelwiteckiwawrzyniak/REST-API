@@ -1,4 +1,5 @@
 import { Contact } from "./schemas/contact.js";
+import { User } from "./schemas/user.js";
 
 export const getAllContacts = async () => {
   return await Contact.find();
@@ -30,4 +31,8 @@ export const updateStatusContact = async (id, isFavorite) => {
     { $set: { favorite: isFavorite } },
     { new: true }
   );
+};
+
+export const updateUser = async (id, fields) => {
+  return User.findByIdAndUpdate({ _id: id }, { $set: fields }, { new: true });
 };
