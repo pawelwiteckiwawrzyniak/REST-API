@@ -1,4 +1,4 @@
-import { createContact } from "../service/index.js";
+import { createContact } from "../../Services/index.js";
 
 export const post = async (req, res, next) => {
   try {

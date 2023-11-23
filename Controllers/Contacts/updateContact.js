@@ -1,4 +1,4 @@
-import { updateContact } from "../service/index.js";
+import { updateContact } from "../../Services/index.js";
 
 export const put = async (req, res, next) => {
   try {

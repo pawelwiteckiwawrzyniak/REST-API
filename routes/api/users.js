@@ -1,9 +1,9 @@
 import express from "express";
-import { signup } from "../../controller/signUp.js";
-import { login } from "../../controller/logIn.js";
-import { auth } from "../../middleware/auth.js";
-import { logout } from "../../controller/logOut.js";
-import { currentUser } from "../../controller/currentUser.js";
+import { signup } from "../../Controllers/Users/signUp.js";
+import { login } from "../../Controllers/Users/logIn.js";
+import { auth } from "../../Controllers/Auth/Middlewares/auth.js";
+import { logout } from "../../Controllers/Users/logOut.js";
+import { currentUser } from "../../Controllers/Users/currentUser.js";
 
 const router = express.Router();
 

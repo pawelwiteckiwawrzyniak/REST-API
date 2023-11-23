@@ -1,6 +1,6 @@
 import passport from "passport";
 import passportJWT from "passport-jwt";
-import { User } from "../service/schemas/user.js";
+import { User } from "../Services/Schemas/user.js";
 import "dotenv/config";
 
 export default function setJWTStrategy() {

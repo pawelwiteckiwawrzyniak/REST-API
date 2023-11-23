@@ -1,6 +1,6 @@
-import { User } from "../service/schemas/user.js";
+import { User } from "../../Services/Schemas/user.js";
 import jwt from "jsonwebtoken";
-import { updateUser } from "../service/index.js";
+import { updateUser } from "../../Services/index.js";
 import { configDotenv } from "dotenv";
 configDotenv();
 

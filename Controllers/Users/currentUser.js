@@ -1,4 +1,4 @@
-import { getUserById } from "../service/index.js";
+import { getUserById } from "../../Services/index.js";
 
 export const currentUser = async (req, res, next) => {
   const userId = res.locals.user._conditions._id;

@@ -1,4 +1,4 @@
-import { User } from "../service/schemas/user.js";
+import { User } from "../../Services/Schemas/user.js";
 
 export const signup = async (req, res, next) => {
   const { email, password, subscription } = req.body;

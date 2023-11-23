@@ -1,4 +1,4 @@
-import { getContactById, updateStatusContact } from "../service/index.js";
+import { getContactById, updateStatusContact } from "../../Services/index.js";
 
 export const patch = async (req, res, next) => {
   try {
