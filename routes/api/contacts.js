@@ -1,11 +1,11 @@
 import express from "express";
 
-import { get } from "../../controller/getAllContacts.js";
-import { getById } from "../../controller/getContactById.js";
-import { post } from "../../controller/createContact.js";
-import { remove } from "../../controller/removeContact.js";
-import { put } from "../../controller/updateContact.js";
-import { patch } from "../../controller/contactFavorite.js";
+import { get } from "../../Controllers/Contacts/getAllContacts.js";
+import { getById } from "../../Controllers/Contacts/getContactById.js";
+import { post } from "../../Controllers/Contacts/createContact.js";
+import { remove } from "../../Controllers/Contacts/removeContact.js";
+import { put } from "../../Controllers/Contacts/updateContact.js";
+import { patch } from "../../Controllers/Contacts/contactFavorite.js";
 
 const router = express.Router();
 

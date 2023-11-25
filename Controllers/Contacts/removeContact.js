@@ -1,4 +1,4 @@
-import { removeContact } from "../service/index.js";
+import { removeContact } from "../../Services/index.js";
 
 export const remove = async (req, res, next) => {
   try {

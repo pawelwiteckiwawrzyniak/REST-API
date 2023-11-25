@@ -1,4 +1,4 @@
-import { updateUser } from "../service/index.js";
+import { updateUser } from "../../Services/index.js";
 
 export const logout = async (req, res, next) => {
   const userId = res.locals.user._conditions._id;

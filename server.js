@@ -3,7 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
 import api from "./routes/api/index.js";
-import setJWTStrategy from "./config/config-passport.js";
+import setJWTStrategy from "./Config/config-passport.js";
 import { configDotenv } from "dotenv";
 configDotenv();
 setJWTStrategy();
@@ -17,7 +17,7 @@ app.use(morgan(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static("public"));
 app.use("/api", api);
 
 app.use((req, res) => {
