@@ -1,13 +1,16 @@
-import { User } from "../../Services/Schemas/user";
+import { User } from "../../Services/Schemas/user.js";
+import { updateUser } from "../../Services/index.js";
 
-export const verifyToken = async () => {
+export const verifyToken = async (req, res, next) => {
   try {
     const { verificationToken } = req.params;
-    const user = User.findOne({ verificationToken: verificationToken });
-
+    const user = await User.findOne({ verificationToken: verificationToken });
+    const payload = {
+      verificationToken: null,
+      verify: true,
+    };
     if (user) {
-      user.verificationToken = null;
-      user.verify = true;
+      await updateUser(user.id, payload);
       return res.status(200).json({ message: "Verification successful" });
     }
     res.status(404).json({ message: "Not found" });

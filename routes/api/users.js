@@ -7,6 +7,7 @@ import { updateAvatar } from "../../Controllers/Users/updateAvatar.js";
 import { upload } from "../../Middlewares/Auth/uploadAvatar.js";
 import { auth } from "../../Middlewares/Auth/auth.js";
 import { verifyToken } from "../../Controllers/Users/verifyToken.js";
+import { resendEmail } from "../../Controllers/Users/resendEmail.js";
 
 const router = express.Router();
 
@@ -16,5 +17,6 @@ router.get("/logout", auth, logout);
 router.get("/current", auth, currentUser);
 router.patch("/avatars", auth, upload.single("avatar"), updateAvatar);
 router.get("/verify/:verificationToken", verifyToken);
+router.post("/verify", resendEmail);
 
 export { router };
