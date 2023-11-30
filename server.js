@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import mongoose from "mongoose";
-import api from "./routes/api/index.js";
+import api from "./Routes/api/index.js";
 import setJWTStrategy from "./Config/config-passport.js";
 import { configDotenv } from "dotenv";
 configDotenv();
