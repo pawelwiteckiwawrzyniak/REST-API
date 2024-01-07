@@ -14,7 +14,7 @@ export const sendEmailVerify = async (email, verificationToken) => {
   const payload = {
     from: process.env.USER,
     to: email,
-    subject: "Verification Email GOIT",
+    subject: "Verification Email",
     text: "Hello",
     html: `<a href="http://localhost:3000/api/users/verify/${verificationToken}">VerificationLink</a>`,
   };
