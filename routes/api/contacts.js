@@ -69,7 +69,7 @@ export { router };
  * @swagger
  * /api/contacts/{id}:
  *  get:
- *    summary: Returns contact with a specified id
+ *    summary: Returns the contact with a specified id
  *    tags: [Contacts]
  *    parameters:
  *      - in: path
@@ -117,7 +117,7 @@ export { router };
  * @swagger
  * /api/contacts/{id}:
  *  delete:
- *    summary: Deletes a specified contact
+ *    summary: Deletes the specified contact
  *    tags: [Contacts]
  *    parameters:
  *      - in: path
@@ -138,7 +138,7 @@ export { router };
  * @swagger
  * /api/contacts/{id}:
  *  put:
- *    summary: Modifies contact with a specified id
+ *    summary: Modifies a contact with a specified id
  *    tags: [Contacts]
  *    parameters:
  *      - in: path
@@ -170,7 +170,7 @@ export { router };
  * @swagger
  * /api/contacts/{id}/favorite:
  *  patch:
- *    summary: Adds specified contact to favorites
+ *    summary: Adds the specified contact to favorites
  *    tags: [Contacts]
  *    parameters:
  *      - in: path
