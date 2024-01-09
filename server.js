@@ -19,7 +19,7 @@ const options = {
     info: {
       title: "Backend for Phonebook App",
       version: "1.0.0",
-      description: "Backend for Phonebook App",
+      description: "Backend for a theoritical Phonebook App",
     },
     servers: [
       {
