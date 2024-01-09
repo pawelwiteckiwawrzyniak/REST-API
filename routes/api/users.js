@@ -20,3 +20,28 @@ router.get("/verify/:verificationToken", verifyToken);
 router.post("/verify", resendEmail);
 
 export { router };
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     User:
+ *      type: object
+ *      properties:
+ *        _id:
+ *          type: string
+ *        name:
+ *          type: string
+ *        email:
+ *          type: string
+ *        phone:
+ *          type: string
+ *        favorite:
+ *          type: boolean
+ *      example:
+ *        _id: 659adb9711d360947ef1028f
+ *        name: ada
+ *        email: ada@test.com
+ *        phone: "1231231123"
+ *        favorite: false
+ */

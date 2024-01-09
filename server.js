@@ -5,12 +5,35 @@ import mongoose from "mongoose";
 import api from "./Routes/api/index.js";
 import setJWTStrategy from "./Config/config-passport.js";
 import { configDotenv } from "dotenv";
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 configDotenv();
 setJWTStrategy();
 
 const uriDb = process.env.DB_HOST;
 const connection = mongoose.connect(uriDb);
+
+const options = {
+  definition: {
+    openapi: "3.1.0",
+    info: {
+      title: "Backend for Phonebook App",
+      version: "1.0.0",
+      description: "Backend for Phonebook App",
+    },
+    servers: [
+      {
+        url: "http://localhost:3000",
+      },
+    ],
+  },
+  apis: ["./Routes/api/*.js"],
+};
+
+const specs = swaggerJsdoc(options);
+
 const app = express();
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(morgan(formatsLogger));
