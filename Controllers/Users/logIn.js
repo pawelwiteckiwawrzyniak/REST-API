@@ -22,5 +22,5 @@ export const login = async (req, res, next) => {
 
   const token = jwt.sign(payload, secret, { expiresIn: "1h" });
   const updatedUser = await updateUser(user.id, { token });
-  return res.status(200).json({ token, updatedUser });
+  return res.status(200).json(updatedUser);
 };
