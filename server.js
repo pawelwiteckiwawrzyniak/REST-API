@@ -17,9 +17,9 @@ const options = {
   definition: {
     openapi: "3.1.0",
     info: {
-      title: "Backend for Phonebook App",
+      title: "REST API",
       version: "1.0.0",
-      description: "Backend for a theoritical Phonebook App",
+      description: "REST API for contact management",
     },
     servers: [
       {
