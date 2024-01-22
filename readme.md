@@ -1,6 +1,6 @@
 # REST API for contact management - project
 
--  This is a backend application developed using Node.js and various middleware libraries. It facilitates the management of a contact database with features such as creating, deleting, modifying, and browsing contacts. The API also includes user authentication and authorization, utilizing JWT tokens, bcrypt for password hashing, and nodemailer for email verification. . Additional functionalities include image processing using Jimp, automated email sending with Postmark, API documentation through Swagger, and development optimization with nodemon for automatic server restarting.
+-  This is a backend application developed using Node.js and various middleware libraries. It facilitates the management of a contact database with features such as creating, deleting, modifying, and browsing contacts. The API also includes user authentication and authorization, utilizing JWT tokens, bcrypt for password hashing, and nodemailer for email verification. Additional functionalities include image processing using Jimp, automated email sending with Postmark, API documentation through Swagger, and development optimization with nodemon for automatic server restarting.
 
 ## Table of Contents
 
